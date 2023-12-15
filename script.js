@@ -91,7 +91,7 @@ const upperCasedCharacters = [
 const charOptions = [];
 const passwordChars = [];
 let generatedPassword = '';
-let passwordLength = 0;
+let passwordLengthParsed = 0;
 
 function pickRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
@@ -125,14 +125,12 @@ function getPasswordOptions() {
 
   //! Once character sets are selected, move on to generating random characters
 
-  passwordLength = parseInt(prompt(`
-  How many characters would you like your password to contain?
-  Password must be at least 8 characters, and not longer than 128
-  characters.`));
+  passwordLength = prompt("How many characters would you like your password to contain? Password must be at least 8 characters, and not longer than 128 characters.");
+  passwordLengthParsed = parseInt(passwordLength);
 
-  if (!(passwordLength >= 8 && passwordLength <= 128)) {
-    alert("The entered value is out of range. Please input a number between 8 and 128.");
-    getPasswordOptions();
+  if (!(passwordLengthParsed >= 8 && passwordLengthParsed <= 128) || !passwordLength) {
+    alert("If you would like to generate a password, please click the 'Generate Password' button again and input a number between 8 and 128.")
+    return;
   }
 
   let wantSpecChars = confirm("Do you want your password to contain special characters?");
@@ -165,7 +163,7 @@ function getRandom(arr) {
   // Add that character to the password
 
   // Once we finish the for loop, return the generated password
-  let cycles = passwordLength - passwordChars.length;
+  let cycles = passwordLengthParsed - passwordChars.length;
   for (i = 0; i < cycles; i++) {
     passwordChars.push(pickRandomElement(arr));
   }
@@ -173,9 +171,17 @@ function getRandom(arr) {
 
 // Function to generate password with user input
 function generatePassword() {
+  getPasswordOptions();
+  getRandom(charOptions.flat());
 
+  const shuffledChars = passwordChars
+    .map(value => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+
+  generatedPassword = shuffledChars.join('').toString();
+  return generatedPassword;
 }
-
 
 // Get references to the #generate element
 const generateBtn = document.querySelector('#generate');
