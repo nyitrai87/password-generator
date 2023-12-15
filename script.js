@@ -97,6 +97,17 @@ const charOptions = [];
 const passwordChars = [];
 const generatedPassword = '';
 
+function generateRandomIndex(array) {
+  return array[Math.floor(Math.random() * array.length)];
+}
+
+function chooseCharOptions(array1, array2) {
+  if (array1) {
+    charOptions.push(array2);
+    passwordChars.push(generateRandomIndex(array2));
+  }
+}
+
 //! You can store the generatedPassword as a string and concat each character OR
 //! as an array and push each character, then join once you have enough characters
 
