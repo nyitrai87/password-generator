@@ -186,7 +186,7 @@ const generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
-  location.reload()
+
   const password = generatePassword();
   const passwordText = document.querySelector('#password');
 
