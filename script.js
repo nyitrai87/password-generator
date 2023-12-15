@@ -90,16 +90,17 @@ const upperCasedCharacters = [
 
 const charOptions = [];
 const passwordChars = [];
-const generatedPassword = '';
+let generatedPassword = '';
+let passwordLength = 0;
 
-function generateRandomIndex(array) {
+function pickRandomElement(array) {
   return array[Math.floor(Math.random() * array.length)];
 }
 
 function chooseCharOptions(array1, array2) {
   if (array1) {
     charOptions.push(array2);
-    passwordChars.push(generateRandomIndex(array2));
+    passwordChars.push(pickRandomElement(array2));
   }
 }
 
@@ -124,7 +125,7 @@ function getPasswordOptions() {
 
   //! Once character sets are selected, move on to generating random characters
 
-  let passwordLength = parseInt(prompt(`
+  passwordLength = parseInt(prompt(`
   How many characters would you like your password to contain?
   Password must be at least 8 characters, and not longer than 128
   characters.`));
@@ -164,12 +165,17 @@ function getRandom(arr) {
   // Add that character to the password
 
   // Once we finish the for loop, return the generated password
+  let cycles = passwordLength - passwordChars.length;
+  for (i = 0; i < cycles; i++) {
+    passwordChars.push(pickRandomElement(arr));
+  }
 }
 
 // Function to generate password with user input
 function generatePassword() {
 
 }
+
 
 // Get references to the #generate element
 const generateBtn = document.querySelector('#generate');
