@@ -153,16 +153,14 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  // Need a variable to hold the password as it's being generated
-  // Need a variable to hold the index that's being generated
+  //! Need a variable to hold the password as it's being generated
 
-  // For loop that loops the number of times that matches the length the user chose
-  // Generate a random number
-  // That number is the index for a character in the mega-array
-  // So then, mega-array[generated-index] is the actual character
-  // Add that character to the password
+  //! For loop that loops the number of times that matches the length the user chose
+  //! Generate a random number
+  //! That number is the index for a character in the mega-array
+  //! So then, mega-array[generated-index] is the actual character
+  //! Add that character to the password
 
-  // Once we finish the for loop, return the generated password
   let cycles = passwordLengthParsed - passwordChars.length;
   for (i = 0; i < cycles; i++) {
     passwordChars.push(pickRandomElement(arr));
@@ -188,6 +186,7 @@ const generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
 function writePassword() {
+  location.reload()
   const password = generatePassword();
   const passwordText = document.querySelector('#password');
 
