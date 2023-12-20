@@ -14,9 +14,9 @@ This project is a random password generator that creates a password, based on th
 5. If you would like to generate another password, please reload the page before clicking the "Generate Password" button again.
 
 ## Screenshots
-![Screenshot of the deployed application](/images/screenshot1.png)
+![Screenshot of the deployed application](./assets/images/screenshot1.png)
 
-![Screenshot of the deployed application in use](/images/screenshot2.png)
+![Screenshot of the deployed application in use](./assets/images/screenshot2.png)
 
 ## Links
 [Link to the deployed application](https://nyitrai87.github.io/password-generator/)
